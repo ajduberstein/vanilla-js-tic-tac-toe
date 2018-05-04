@@ -11,14 +11,22 @@ let state = {};
 const checkForWin = (board) => {
   let horizontalVictory, verticalVictory, diagonalLeft, diagonalRight;
   for (let i = 0; i < board.length; i++) {
-    horizontalVictory = board[i][0] !== 0 && board[i][0] === board[i][1] && board[i][1] === board[i][2];
-    verticalVictory = board[0][i] !== 0 && board[0][i] === board[1][i] && board[1][i] === board[2][i];
+    horizontalVictory = board[i][0] !== 0 && 
+      board[i][0] === board[i][1] &&
+      board[i][1] === board[i][2];
+    verticalVictory = board[0][i] !== 0 &&
+      board[0][i] === board[1][i] &&
+      board[1][i] === board[2][i];
     if (horizontalVictory || verticalVictory) {
       return true;
     }
   }
-  diagonalLeft = board[0][0] !== 0 && board[0][0] === board[1][1] && board[1][1] === board[2][2];
-  diagonalRight = board[2][0] !== 0 && board[2][0] === board[1][1] && board[1][1] === board[0][2];
+  diagonalLeft = board[0][0] !== 0 &&
+    board[0][0] === board[1][1] &&
+    board[1][1] === board[2][2];
+  diagonalRight = board[2][0] !== 0 &&
+    board[2][0] === board[1][1] &&
+    board[1][1] === board[0][2];
   if (diagonalRight || diagonalLeft) {
     return true;
   };
@@ -82,7 +90,7 @@ const getBoard = (boardSize) => {
 
 const makeButton = () => {
     let winner = state.isPlayerOneTurn ? 'X' : 'O';
-    let btn = document.createElement("div");
+    let btn = document.createElement('div');
     btn.className = 'btn';
     btn.innerHTML = 'Play Again';
     btn.innerHTML = `${btn.innerHTML} - ${winner} wins`;
@@ -99,11 +107,11 @@ const init = (boardSize) => {
   let fullBoardSize = (boardSize * boardSize);
   for (let i = 0; i < fullBoardSize; i++) {
     if (i % boardSize === 0) {
-      rowNode = document.createElement("div");
+      rowNode = document.createElement('div');
       rowNode.className = 'row';
       boardDisplay.appendChild(rowNode);
     }
-    node = document.createElement("div");
+    node = document.createElement('div');
     node.className = 'boardTile';
     node.id = i;
     node.addEventListener('click', onClick);
